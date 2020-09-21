@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -233,15 +233,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8606d1aa4105c41a67293a244d62ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeInnerCorner: {fileID: 6750598858563195561, guid: 4f35396d5a4ade5418ab9003cc1c8823,
+  mazeInnerCorner: {fileID: 739907545274127398, guid: 4f35396d5a4ade5418ab9003cc1c8823,
     type: 3}
-  mazeOuterCorner: {fileID: 5520106460730991556, guid: a82c436f8e5d7a449b36d4649447e08f,
+  mazeOuterCorner: {fileID: 2642860971680949060, guid: a82c436f8e5d7a449b36d4649447e08f,
     type: 3}
-  mazeInnerStraight: {fileID: 2322323983761046114, guid: 6ae238b2bdf1a3d4daa55d81bcad8820,
+  mazeInnerLine: {fileID: 4546011671363728154, guid: 6ae238b2bdf1a3d4daa55d81bcad8820,
     type: 3}
-  mazeOuterStraight: {fileID: 7205652846566390880, guid: 6af677bafa11980468f079d769a563aa,
+  mazeOuterLine: {fileID: 4526692835651359816, guid: 6af677bafa11980468f079d769a563aa,
     type: 3}
-  mazeOuterT: {fileID: 6427579924267495848, guid: f6c1ab67c4981e04da4e4c36fd159d3f,
+  mazeOuterT: {fileID: 7462285813943614007, guid: f6c1ab67c4981e04da4e4c36fd159d3f,
+    type: 3}
+  mazeInnerDouble: {fileID: 2815453804643453981, guid: aed743e8cab590a43b5a6bf52a5dd367,
     type: 3}
 --- !u!4 &1143506931
 Transform:
