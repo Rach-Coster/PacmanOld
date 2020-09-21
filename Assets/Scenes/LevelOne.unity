@@ -305,6 +305,8 @@ MonoBehaviour:
     type: 3}
   mazeInnerDouble: {fileID: 2815453804643453981, guid: aed743e8cab590a43b5a6bf52a5dd367,
     type: 3}
+  pellets: {fileID: 0}
+  dots: {fileID: 0}
   topRightParent: {fileID: 91683047}
   bottomLeftParent: {fileID: 2090032310}
   bottomRightParent: {fileID: 74414139}

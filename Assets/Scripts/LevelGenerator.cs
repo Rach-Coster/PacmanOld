@@ -21,9 +21,9 @@ public class LevelGenerator : MonoBehaviour
         {2,5,5,5,5,5,5,4,4,5,5,5,5,4},
 
         {1,2,2,2,2,1,5,4,3,4,4,3,0,4},
-        
+
         {0,0,0,0,0,2,5,4,3,4,4,3,0,3},
-        
+
         {0,0,0,0,0,2,5,4,4,0,0,0,0,0},
         {0,0,0,0,0,2,5,4,4,0,3,4,4,0},
         {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
@@ -48,6 +48,12 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject mazeInnerDouble;
 
+    [SerializeField]
+    private GameObject pellet;
+
+    [SerializeField]
+    private GameObject dot; 
+
     public Transform topRightParent;
 
     public Transform bottomLeftParent;
@@ -58,7 +64,7 @@ public class LevelGenerator : MonoBehaviour
     private float yOffset;
 
     private List<GameObject> mazeParts;
-  
+
 
     // Start is called before the first frame update
     void Start()
@@ -69,10 +75,10 @@ public class LevelGenerator : MonoBehaviour
         mazeParts = new List<GameObject>();
 
         CreateLevel();
-            
+
         DupeLevel(topRightParent, new Vector3(-1, 1, 1), 10, 0);
         DupeLevel(bottomLeftParent, new Vector3(1, -1, 1), 0, 17);
-        DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -42.2f, 17);
+        DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -47.2f, 17);
 
         RemoveGaps();
     }
@@ -80,7 +86,7 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void CreateLevel()
@@ -111,7 +117,7 @@ public class LevelGenerator : MonoBehaviour
                             mazeOC.transform.localScale = new Vector2(-1, 1);
                             mazeParts.Add(mazeOC);
                         }
-                        else if(i == 13)
+                        else if (i == 13)
                         {
                             mazeOC = Instantiate(mazeInnerDouble);
                             mazeOC.transform.position = new Vector2((xOffset), (yOffset - 0.25f));
@@ -149,7 +155,7 @@ public class LevelGenerator : MonoBehaviour
                             mazeOL.transform.rotation = Quaternion.Euler(0, 0, 90);
                             mazeParts.Add(mazeOL);
                         }
-                        else if(i == 13)
+                        else if (i == 13)
                         {
                             mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2((xOffset - 0.5f), (yOffset - 0.51f));
@@ -165,7 +171,7 @@ public class LevelGenerator : MonoBehaviour
                         break;
 
                     case 3:
-                        GameObject mazeIC; 
+                        GameObject mazeIC;
                         if (i == 2 && j == 5 || i == 2 && j == 11 || i == 6 && j == 5 || i == 6 && j == 8 ||
                             i == 7 && j == 13 || i == 9 && j == 11)
                         {
@@ -220,7 +226,7 @@ public class LevelGenerator : MonoBehaviour
                             mazeParts.Add(mazeIL);
                         }
                         else if (i == 3 || i == 7 && j == 7 || i == 7 && j == 8 || i == 8 && j == 7 ||
-                                 i == 8 && j == 8 || i == 8 && j == 13 || i == 9 && j == 7 || i == 9 && j == 13 
+                                 i == 8 && j == 8 || i == 8 && j == 13 || i == 9 && j == 7 || i == 9 && j == 13
                                  || i == 10 && j == 7 || i == 11 || i == 12 && j == 7 || i == 12 && j == 8 || i == 13
                                  || i == 14)
                         {
@@ -235,8 +241,22 @@ public class LevelGenerator : MonoBehaviour
                             mazeIL.transform.position = new Vector2(xOffset, yOffset);
                             mazeParts.Add(mazeIL);
                         }
-               
+
                         break;
+
+                    case 5:
+                        GameObject mazeD;
+                        mazeD = Instantiate(dot);
+                        mazeD.transform.position = new Vector2(xOffset, yOffset);
+                        mazeParts.Add(mazeD);
+                        break;
+
+                    case 6:
+                        GameObject mazeP;
+                        mazeP = Instantiate(pellet);
+                        mazeP.transform.position = new Vector2(xOffset, yOffset);
+                        mazeParts.Add(mazeP);
+                        break; 
 
                     case 7:
                         GameObject mazeOT;
@@ -245,7 +265,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeParts.Add(mazeOT);
                         break;
                 }
-                
+
                 //14 for row 2 straight 
 
                 xOffset += 1.25f;
@@ -257,9 +277,8 @@ public class LevelGenerator : MonoBehaviour
 
     void DupeLevel(Transform parent, Vector3 scale, float xAddition, float yAddition)
     {
-        for(var i = 0; i < mazeParts.Count; i++)
+        for (var i = 0; i < mazeParts.Count; i++)
         {
-           // mazeParts.RemoveAt(i);
             GameObject clone;
             clone = Instantiate(mazeParts[i]);
 
@@ -270,6 +289,7 @@ public class LevelGenerator : MonoBehaviour
         parent.transform.localScale = scale;
     }
 
+    //To streamline
     void RemoveGaps()
     {
         GameObject gap;
@@ -297,7 +317,8 @@ public class LevelGenerator : MonoBehaviour
 
         for (var i = 0; i < mazeParts.Count; i++)
         {
-             mazeParts.RemoveAt(i);
+            mazeParts.RemoveAt(i);
         }
     }
+}
 
