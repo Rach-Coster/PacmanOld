@@ -31,9 +31,9 @@ public class PacmanMovement : MonoBehaviour
     {
         GameObject pm; 
         pm = Instantiate(pacman);
-        pm.transform.position = new Vector2(-17, 2.5f);
+        pm.transform.position = new Vector2(-17, 1.7f);
 
-        addTween(pm.transform, new Vector2(pm.transform.position.x, pm.transform.position.y), new Vector2(0, 2.5f), 1);
+        addTween(pm.transform, new Vector2(pm.transform.position.x, pm.transform.position.y), new Vector2(-10.4f, 1.7f), 1);
     }
 
     public bool addTween(Transform targetObject, Vector2 startPos, Vector2 endPos, float duration)
