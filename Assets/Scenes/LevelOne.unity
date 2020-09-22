@@ -304,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143506931}
   - component: {fileID: 1143506930}
+  - component: {fileID: 1143506932}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -337,6 +338,14 @@ MonoBehaviour:
     type: 3}
   pellet: {fileID: 158220887811278501, guid: 182cd332d7da46646afe828d227d12c6, type: 3}
   dot: {fileID: 7618255304813386191, guid: de81c91469737c74f95b5ef9ccf2fe89, type: 3}
+  ghostYellow: {fileID: 204094665291297040, guid: cfc9614a71d47734cbf727d2cdacb006,
+    type: 3}
+  ghostGreen: {fileID: 1704848707881405299, guid: db222589a154d3844a8553e212a5ef0d,
+    type: 3}
+  ghostRed: {fileID: 5558944930205342539, guid: 859850c14b3ed274398522c2b43783df,
+    type: 3}
+  ghostPink: {fileID: 6128521087667880600, guid: 8d42f648b0233c8469cba36e726cae3e,
+    type: 3}
   topRightParent: {fileID: 91683047}
   topLeftParent: {fileID: 568468667}
   bottomLeftParent: {fileID: 2090032310}
@@ -355,6 +364,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143506932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143506929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67aba403989739a49b0604e5c344a94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pacman: {fileID: 1448931699403284011, guid: a7d7aaf18620b744fbe4a91ad0c60dcc, type: 3}
 --- !u!1 &2090032309
 GameObject:
   m_ObjectHideFlags: 0
