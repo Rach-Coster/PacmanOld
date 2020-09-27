@@ -15,14 +15,15 @@ public class PacmanMovement : MonoBehaviour
 
     List<TweenLibrary> activeTweens;
 
-    float delay; 
+    float deltaTime; 
+
     // Start is called before the first frame update
     void Start()
     {
-        delay = 0;
         activeTweens = new List<TweenLibrary>(); 
         GeneratePacman();
         StartCoroutine(TweenPacman());
+        deltaTime = 0; 
     }
 
     // Update is called once per frame
@@ -36,7 +37,7 @@ public class PacmanMovement : MonoBehaviour
                    (Mathf.Abs((activeTweens[i].Target.position.y - activeTweens[i].EndPos.y)) > 0.1f))
                 {
                     
-                    float timeFraction = (Time.time - activeTweens[i].StartTime) / activeTweens[i].Duration;
+                    float timeFraction = (deltaTime - activeTweens[i].StartTime) / activeTweens[i].Duration;
                     float lengthOfJourney = Vector2.Distance(activeTweens[i].StartPos, activeTweens[i].EndPos);
                     float distanceFraction = timeFraction / lengthOfJourney;
 
@@ -51,7 +52,7 @@ public class PacmanMovement : MonoBehaviour
                 }
             }
         }
-
+        deltaTime += Time.deltaTime;
     }
 
     void GeneratePacman()
@@ -117,7 +118,7 @@ public class PacmanMovement : MonoBehaviour
 
     void AddTween(Transform targetObject, Vector2 startPos, Vector2 endPos, float duration)
     {
-        TweenLibrary itemTweened = new TweenLibrary(targetObject.transform, startPos, endPos, Time.time, duration);
+        TweenLibrary itemTweened = new TweenLibrary(targetObject.transform, startPos, endPos, deltaTime, duration);
         
         activeTweens.Add(itemTweened);
     }

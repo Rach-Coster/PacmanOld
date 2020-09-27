@@ -156,73 +156,73 @@ public class ItemState : MonoBehaviour
             GameObject dot = mapTopLeft.transform.Find("Dot 2 1").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 35)
+        if (Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 1").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -16 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -16 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 2").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 3").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -13 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -13 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 4").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -12 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -12 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 5").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -11 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -11 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 6").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -9 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -9 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 7").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -8 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -8 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 8").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -6 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -6 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 9").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -5 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -5 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 10").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -4 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -4 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 11").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -2 && Math.Round(pacmanPos.y) == 36)
+        if (Math.Round(pacmanPos.x) == -2 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -15 && Math.Round(pacmanPos.y) == 36)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 12").gameObject;
@@ -246,31 +246,25 @@ public class ItemState : MonoBehaviour
             GameObject dot = mapTopLeft.transform.Find("Dot 4 12").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -2 && pacmanPos.y == 25.5f)
+        if (Math.Round(pacmanPos.x) == -2 && Math.Round(pacmanPos.y) == 26)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 5 12").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -2 && pacmanPos.y == 25.5f)
-        {
-            mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
-            GameObject dot = mapTopLeft.transform.Find("Dot 5 12").gameObject;
-            dot.SetActive(false);
-        }
-        if (Math.Round(pacmanPos.x) == -3f && pacmanPos.y == 25.5f)
+        if (Math.Round(pacmanPos.x) == -3 && Math.Round(pacmanPos.y) == 26)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 5 11").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -4f && pacmanPos.y == 25.5f)
+        if (Math.Round(pacmanPos.x) == -4 && Math.Round(pacmanPos.y) == 26)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 5 10").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -6 && pacmanPos.y == 25.5f)
+        if (Math.Round(pacmanPos.x) == -6 && Math.Round(pacmanPos.y) == 26)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 5 9").gameObject;
@@ -288,25 +282,25 @@ public class ItemState : MonoBehaviour
             GameObject dot = mapTopLeft.transform.Find("Dot 7 9").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -6 && pacmanPos.y == 18)
+        if (Math.Round(pacmanPos.x) == -6 && Math.Round(pacmanPos.y) == 18)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 8 9").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -6 && pacmanPos.y == 18)
+        if (Math.Round(pacmanPos.x) == -6 && Math.Round(pacmanPos.y) == 18)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 8 10").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -4 && pacmanPos.y == 18)
+        if (Math.Round(pacmanPos.x) == -4 && Math.Round(pacmanPos.y) == 18)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 8 11").gameObject;
             dot.SetActive(false);
         }
-        if (Math.Round(pacmanPos.x) == -3 && pacmanPos.y == 18)
+        if (Math.Round(pacmanPos.x) == -3 && Math.Round(pacmanPos.y) == 18)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 8 12").gameObject;
