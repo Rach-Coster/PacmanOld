@@ -252,7 +252,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fdd8f843dfe07224e9a3732a0e820c8c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5fc067365cd6de1479b780c95dc31a47, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -456,6 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8606d1aa4105c41a67293a244d62ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 519420028}
   mazeInnerCorner: {fileID: 739907545274127398, guid: 4f35396d5a4ade5418ab9003cc1c8823,
     type: 3}
   mazeOuterCorner: {fileID: 2642860971680949060, guid: a82c436f8e5d7a449b36d4649447e08f,
@@ -483,6 +484,7 @@ MonoBehaviour:
   topLeftParent: {fileID: 568468667}
   bottomLeftParent: {fileID: 2090032310}
   bottomRightParent: {fileID: 74414139}
+  audioClip: {fileID: 8300000, guid: fdd8f843dfe07224e9a3732a0e820c8c, type: 3}
 --- !u!4 &1143506931
 Transform:
   m_ObjectHideFlags: 0
@@ -509,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67aba403989739a49b0604e5c344a94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 9df629316e60bbf4b9b84e7d78dfb3b8, type: 3}
   pacman: {fileID: 1448931699403284011, guid: a7d7aaf18620b744fbe4a91ad0c60dcc, type: 3}
 --- !u!114 &1143506933
 MonoBehaviour:
@@ -523,6 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e6a7c7193253f47a4583b1d0ede7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cherry: {fileID: 6533342779144786658, guid: 6614fbfcdfa04944ea806e0d0fecc187, type: 3}
+  remainingLives: {fileID: 170058320640070685, guid: fdf979c2bca86294a9aa707e414a189c,
+    type: 3}
   audioClip:
   - {fileID: 8300000, guid: 2c4592c3a8d382d45b38d0aaaa003570, type: 3}
   - {fileID: 8300000, guid: 2342cde2d5e258a44b66de791616d5b0, type: 3}

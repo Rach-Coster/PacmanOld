@@ -8,6 +8,12 @@ public class ItemState : MonoBehaviour
 {
     private List<GameObject> pellet;
 
+    [SerializeField]
+    GameObject cherry;
+
+    [SerializeField]
+    GameObject remainingLives;
+
     private GameObject gameBoard;
     private GameObject mapBottomLeft;
     private GameObject mapTopLeft;
@@ -15,11 +21,10 @@ public class ItemState : MonoBehaviour
     private GameObject pelletAudioSource; 
 
     public AudioClip[] audioClip;
-    AudioSource audioSource; 
+    AudioSource audioSource;
 
+    const int lives = 3; 
     Vector2 pacmanPos;
-
-    bool hit; 
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,10 @@ public class ItemState : MonoBehaviour
         audioSource.clip = audioClip[0]; 
 
         pacmanPos = new Vector2();
+
+        CreateItems();  
+
+
     }
 
     // Update is called once per frame
@@ -39,13 +48,10 @@ public class ItemState : MonoBehaviour
         {
             pellet = gameObject.GetComponent<LevelGenerator>().GetPellets();
             gameBoard = gameObject.GetComponent<LevelGenerator>().GetGameboard();
-
         }
 
-  
+        
         pacmanPos = gameObject.GetComponent<PacmanMovement>().GetPacmanPosition();
-
-        //Debug.Log("Pacmanpos Y " + pacmanPos.y);
 
         if (pacmanPos.x == -10.4f && pacmanPos.y == 1.7f)
         {
@@ -182,6 +188,7 @@ public class ItemState : MonoBehaviour
             audioSource.clip = audioClip[1];
             audioSource.PlayDelayed(0.03f);
         }
+
         if (Math.Round(pacmanPos.x) == -17f && Math.Round(pacmanPos.y) == 33)
         {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
@@ -363,15 +370,21 @@ public class ItemState : MonoBehaviour
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 8 12").gameObject;
             dot.SetActive(false);
-                audioSource.PlayDelayed(0.03f);
+            audioSource.PlayDelayed(0.03f);
         }
-
-   
-
-
-
-
-
-
     }
+
+    void CreateItems()
+    {
+        float xPos = -15.8f; 
+        Instantiate(cherry);
+        cherry.transform.position = new Vector2(-17.8f, -35.5f);
+
+        for (var i = 0; i < lives; i++)
+        {
+            Instantiate(remainingLives);
+            remainingLives.transform.position = new Vector2(xPos += 2, -35.5f);
+        }
+    }
+
 }

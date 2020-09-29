@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Net;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class LevelGenerator : MonoBehaviour
         {2,2,2,2,2,1,5,3,3,0,4,0,0,0},
         {0,0,0,0,0,0,5,0,0,0,4,0,0,0},
     };
+
+    [SerializeField]
+    private GameObject camera; 
 
     [SerializeField]
     private GameObject mazeInnerCorner;
@@ -76,6 +80,8 @@ public class LevelGenerator : MonoBehaviour
 
     public Transform bottomRightParent;
 
+    public AudioClip audioClip; 
+
 
     private float xOffset;
     private float yOffset;
@@ -103,7 +109,12 @@ public class LevelGenerator : MonoBehaviour
         DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -47.2f, 17);
 
         //ignoreBottomRow(); 
-        RemoveGaps();
+        RemoveGaps(); 
+    }
+
+    private void Update()
+    {
+        StartLevelAudio(); 
     }
 
     void CreateLevel()
@@ -518,5 +529,16 @@ public class LevelGenerator : MonoBehaviour
         return gameBoard; 
     }
 
+    void StartLevelAudio()
+    {
+        AudioSource audioSource = camera.GetComponent<AudioSource>();
+
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+            audioSource.loop = true; 
+        }
+    }
 }
 
