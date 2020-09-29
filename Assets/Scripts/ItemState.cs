@@ -179,7 +179,7 @@ public class ItemState : MonoBehaviour
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject pellet = mapTopLeft.transform.Find("Pellet(Clone)").gameObject;
             pellet.SetActive(false);
-            audioSource.clip = audioClip[2];
+            audioSource.clip = audioClip[1];
             audioSource.PlayDelayed(0.03f);
         }
         if (Math.Round(pacmanPos.x) == -17f && Math.Round(pacmanPos.y) == 33)
@@ -187,6 +187,7 @@ public class ItemState : MonoBehaviour
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 2 1").gameObject;
             dot.SetActive(false);
+            audioSource.clip = audioClip[0];
             audioSource.PlayDelayed(0.03f);
         }
         if (Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 36)

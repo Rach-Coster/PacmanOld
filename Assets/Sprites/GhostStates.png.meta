@@ -13,15 +13,24 @@ TextureImporter:
     second: GhostPink
   - first:
       213: 1458088810636232997
-    second: GhostGreen
+    second: GhostScared
   - first:
       213: 674140162786070682
-    second: GhostScared
+    second: GhostTransition
   - first:
       213: -3849070915762879708
     second: GhostReverse
   - first:
       213: 5035048982135153611
+    second: GhostEaten
+  - first:
+      213: -8512709559151101167
+    second: GhostScared
+  - first:
+      213: -681628179156420786
+    second: GhostTransition
+  - first:
+      213: 1271008141288488591
     second: GhostEaten
   externalObjects: {}
   serializedVersion: 10
@@ -107,11 +116,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GhostYellow
+      name: GhostScared
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -128,11 +137,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostRed
+      name: GhostTransition
       rect:
         serializedVersion: 2
         x: 256
-        y: 512
+        y: 256
         width: 256
         height: 256
       alignment: 0
@@ -144,90 +153,6 @@ TextureImporter:
       bones: []
       spriteID: e473c7058ce5a86f0800000000000000
       internalID: -681628179156420786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostPink
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8e3120ab2783a110800000000000000
-      internalID: 1271008141288488591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostGreen
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 529c1f84c0c2c3410800000000000000
-      internalID: 1458088810636232997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostScared
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 257
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9010b308e60b5900800000000000000
-      internalID: 674140162786070682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostReverse
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4238aa6356a559ac0800000000000000
-      internalID: -3849070915762879708
       vertices: []
       indices: 
       edges: []
@@ -247,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3abd65f5610e540800000000000000
-      internalID: 5035048982135153611
+      spriteID: f8e3120ab2783a110800000000000000
+      internalID: 1271008141288488591
       vertices: []
       indices: 
       edges: []

@@ -6,7 +6,9 @@ using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngineInternal;
 
-public class PacmanMovement : MonoBehaviour { 
+public class PacmanMovement : MonoBehaviour {
+
+    public AudioClip audioClip; 
 
     [SerializeField]
     GameObject pacman;
@@ -61,14 +63,19 @@ public class PacmanMovement : MonoBehaviour {
         pm = Instantiate(pacman);
         //-17 1.7f
         pm.transform.position = new Vector2(-17, 1.7f);
+        pm.AddComponent<AudioSource>(); 
         pm.GetComponent<SpriteRenderer>().sortingOrder = 1; 
     }
 
     IEnumerator TweenPacman()
     {
         AddTween(pm.transform, new Vector2(pm.transform.position.x, pm.transform.position.y), new Vector2(-10.4f, 1.7f), 0.4f);
+        pm.GetComponent<AudioSource>().clip = audioClip;
+        pm.GetComponent<AudioSource>().Play();
+        pm.GetComponent<AudioSource>().loop = true; 
         yield return new WaitForSeconds(2.7f);
 
+        pm.GetComponent<AudioSource>().Stop();
         pm.transform.rotation = Quaternion.Euler(0, 0, 90);
         AddTween(pm.transform, new Vector2(pm.transform.position.x, pm.transform.position.y), new Vector2(-10.4f, 18), 0.4f);
         yield return new WaitForSeconds(6.6f);
@@ -103,6 +110,7 @@ public class PacmanMovement : MonoBehaviour {
 
         pm.transform.rotation = Quaternion.Euler(0, 0, -90);
         AddTween(pm.transform, new Vector2(pm.transform.position.x, pm.transform.position.y), new Vector2(-3.07f, 11), 0.4f);
+        pm.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2.8f);
 
         pm.transform.rotation = Quaternion.Euler(0, -180, 0);

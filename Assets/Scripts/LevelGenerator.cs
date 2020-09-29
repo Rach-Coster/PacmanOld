@@ -63,7 +63,7 @@ public class LevelGenerator : MonoBehaviour
     private GameObject ghostRed;
 
     [SerializeField]
-    private GameObject ghostPink;
+    private GameObject ghostPurple;
 
     [SerializeField]
     private GameObject gameBoard;
@@ -75,8 +75,6 @@ public class LevelGenerator : MonoBehaviour
     public Transform bottomLeftParent;
 
     public Transform bottomRightParent;
-
-    public Animator animator; 
 
 
     private float xOffset;
@@ -479,7 +477,7 @@ public class LevelGenerator : MonoBehaviour
         ghost.transform.position = new Vector2(4f, 0);
         ghost.transform.localScale = new Vector2(1, 1);
 
-        ghost = Instantiate(ghostPink);
+        ghost = Instantiate(ghostPurple);
         ghost.transform.position = new Vector2(-3f, 5.5f);
         ghost.transform.localScale = new Vector2(1, 1);
 

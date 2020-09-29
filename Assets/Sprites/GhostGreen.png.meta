@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 6dc51254c3356b14fbb6e309823313e0
+guid: dfb8d36923e5297428c0780b7c514d76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8719965121614041626
-    second: GhostRed
+      213: 5678456057283954000
+    second: GhostGreen
   - first:
-      213: -1267912965877497926
-    second: GhostRedUp
+      213: 5400765443276782853
+    second: GhostGreenUp
   - first:
-      213: -7805264735449056468
-    second: GhostRedDown
+      213: 1936507963823634849
+    second: GhostGreenDown
   - first:
-      213: 3105510017753157650
-    second: GhostRedLeft
+      213: -4966435242027575262
+    second: GhostGreenLeft
   - first:
-      213: -2429047952498837265
-    second: GhostRedRight
+      213: -2852765559087658001
+    second: GhostGreenRight
+  - first:
+      213: 2486332240237516722
+    second: GhostGreen_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -101,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GhostRed
+      name: GhostGreen
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a12d997e31a830970800000000000000
-      internalID: 8719965121614041626
+      spriteID: 0554317c2bdedce40800000000000000
+      internalID: 5678456057283954000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostRedUp
+      name: GhostGreenUp
       rect:
         serializedVersion: 2
         x: 256
@@ -136,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abf72ce00e7776ee0800000000000000
-      internalID: -1267912965877497926
+      spriteID: 50db7b16e8f53fa40800000000000000
+      internalID: 5400765443276782853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostRedDown
+      name: GhostGreenDown
       rect:
         serializedVersion: 2
         x: 0
@@ -157,18 +160,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2bfca1c3112ea390800000000000000
-      internalID: -7805264735449056468
+      spriteID: 1a93c68abbbdfda10800000000000000
+      internalID: 1936507963823634849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostRedLeft
+      name: GhostGreenLeft
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
+        x: 255
+        y: 255
         width: 256
         height: 256
       alignment: 0
@@ -178,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 210189e48ecf81b20800000000000000
-      internalID: 3105510017753157650
+      spriteID: 22817fee57da31bb0800000000000000
+      internalID: -4966435242027575262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostRedRight
+      name: GhostGreenRight
       rect:
         serializedVersion: 2
         x: 0
@@ -199,8 +202,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe8bae0c1c94a4ed0800000000000000
-      internalID: -2429047952498837265
+      spriteID: feb8c1fa6d0f868d0800000000000000
+      internalID: -2852765559087658001
       vertices: []
       indices: 
       edges: []
