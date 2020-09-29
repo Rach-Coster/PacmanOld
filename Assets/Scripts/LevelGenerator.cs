@@ -66,7 +66,7 @@ public class LevelGenerator : MonoBehaviour
     private GameObject ghostPink;
 
     [SerializeField]
-    private GameObject gameBoard; 
+    private GameObject gameBoard;
 
     public Transform topRightParent;
 
@@ -76,13 +76,14 @@ public class LevelGenerator : MonoBehaviour
 
     public Transform bottomRightParent;
 
+    public Animator animator; 
+
 
     private float xOffset;
     private float yOffset;
 
     private List<GameObject> mazeParts;
     private List<GameObject> pellets;
-
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +94,7 @@ public class LevelGenerator : MonoBehaviour
         mazeParts = new List<GameObject>();
         pellets = new List<GameObject>();
 
+
         topLeftParent.transform.parent = gameBoard.transform; 
 
         CreateLevel();
@@ -102,13 +104,8 @@ public class LevelGenerator : MonoBehaviour
         DupeLevel(bottomLeftParent, new Vector3(1, -1, 1), 0, 17);
         DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -47.2f, 17);
 
+        //ignoreBottomRow(); 
         RemoveGaps();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void CreateLevel()
@@ -499,7 +496,14 @@ public class LevelGenerator : MonoBehaviour
             mazeParts.RemoveAt(i);
         }
     }
-
+    void ignoreBottomRow()
+    {
+        for(var i = bottomRightParent.childCount - 14; i < bottomRightParent.childCount; i++)
+        {
+            bottomRightParent.transform.GetChild(i).gameObject.SetActive(false);
+            bottomLeftParent.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
     public List<GameObject> GetPellets()
     {
 
@@ -515,5 +519,6 @@ public class LevelGenerator : MonoBehaviour
     {
         return gameBoard; 
     }
+
 }
 

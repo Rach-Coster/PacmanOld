@@ -6,8 +6,8 @@ using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngineInternal;
 
-public class PacmanMovement : MonoBehaviour
-{
+public class PacmanMovement : MonoBehaviour { 
+
     [SerializeField]
     GameObject pacman;
 
@@ -15,12 +15,13 @@ public class PacmanMovement : MonoBehaviour
 
     List<TweenLibrary> activeTweens;
 
-    float deltaTime; 
+    float deltaTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        activeTweens = new List<TweenLibrary>(); 
+        activeTweens = new List<TweenLibrary>();
+
         GeneratePacman();
         StartCoroutine(TweenPacman());
         deltaTime = 0; 
@@ -60,6 +61,7 @@ public class PacmanMovement : MonoBehaviour
         pm = Instantiate(pacman);
         //-17 1.7f
         pm.transform.position = new Vector2(-17, 1.7f);
+        pm.GetComponent<SpriteRenderer>().sortingOrder = 1; 
     }
 
     IEnumerator TweenPacman()

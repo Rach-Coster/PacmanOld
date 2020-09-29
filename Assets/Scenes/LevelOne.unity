@@ -382,6 +382,7 @@ MonoBehaviour:
   ghostPink: {fileID: 6128521087667880600, guid: 8d42f648b0233c8469cba36e726cae3e,
     type: 3}
   gameBoard: {fileID: 366629377}
+  animationController: {fileID: 0}
   topRightParent: {fileID: 91683047}
   topLeftParent: {fileID: 568468667}
   bottomLeftParent: {fileID: 2090032310}
@@ -425,6 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e6a7c7193253f47a4583b1d0ede7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 2c4592c3a8d382d45b38d0aaaa003570, type: 3}
+  - {fileID: 8300000, guid: 2342cde2d5e258a44b66de791616d5b0, type: 3}
 --- !u!1 &2090032309
 GameObject:
   m_ObjectHideFlags: 0
