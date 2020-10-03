@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8606d1aa4105c41a67293a244d62ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420028}
+  cam: {fileID: 519420031}
   mazeInnerCorner: {fileID: 739907545274127398, guid: 4f35396d5a4ade5418ab9003cc1c8823,
     type: 3}
   mazeOuterCorner: {fileID: 2642860971680949060, guid: a82c436f8e5d7a449b36d4649447e08f,

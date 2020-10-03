@@ -31,7 +31,7 @@ public class LevelGenerator : MonoBehaviour
     };
 
     [SerializeField]
-    private GameObject camera; 
+    private Camera cam;
 
     [SerializeField]
     private GameObject mazeInnerCorner;
@@ -80,7 +80,8 @@ public class LevelGenerator : MonoBehaviour
 
     public Transform bottomRightParent;
 
-    public AudioClip audioClip; 
+    public AudioClip audioClip;
+
 
 
     private float xOffset;
@@ -98,25 +99,25 @@ public class LevelGenerator : MonoBehaviour
         mazeParts = new List<GameObject>();
         pellets = new List<GameObject>();
 
-
-        topLeftParent.transform.parent = gameBoard.transform; 
+        topLeftParent.transform.parent = gameBoard.transform;
 
         CreateLevel();
-        GenerateGhosts();  
+        GenerateGhosts();
 
         DupeLevel(topRightParent, new Vector3(-1, 1, 1), 10, 0);
         DupeLevel(bottomLeftParent, new Vector3(1, -1, 1), 0, 17);
         DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -47.2f, 17);
 
+
+
         //ignoreBottomRow(); 
-        RemoveGaps(); 
+        RemoveGaps();
     }
 
     private void Update()
     {
-        StartLevelAudio(); 
+        StartLevelAudio();
     }
-
     void CreateLevel()
     {
         for (var i = 0; i < 15; i++)
@@ -124,9 +125,6 @@ public class LevelGenerator : MonoBehaviour
             //temp
             for (var j = 0; j < 14; j++)
             {
-                /*   Debug.Log("LevelMap: " + levelMap[i, j]);
-                   Debug.Log("2D Array" + i + " " + j);*/
-
                 switch (levelMap[i, j])
                 {
                     case 1:
@@ -137,221 +135,171 @@ public class LevelGenerator : MonoBehaviour
                         {
                             mazeOC = Instantiate(mazeOuterCorner);
                             mazeOC.transform.position = new Vector2((xOffset - 1.233f), yOffset);
-                            mazeOC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOC);
+
                         }
                         else if (i == 9 && j == 0)
                         {
                             mazeOC = Instantiate(mazeOuterCorner);
                             mazeOC.transform.position = new Vector2((xOffset - 1.233f), yOffset);
                             mazeOC.transform.localScale = new Vector2(1, -1);
-                            mazeOC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOC);
                         }
                         else if (i == 9 && j == 5)
                         {
                             mazeOC = Instantiate(mazeInnerDouble);
                             mazeOC.transform.position = new Vector2((xOffset), (yOffset - 0.26f));
                             mazeOC.transform.localScale = new Vector2(-1, 1);
-                            mazeOC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOC);
                         }
                         else if (i == 13)
                         {
                             mazeOC = Instantiate(mazeInnerDouble);
                             mazeOC.transform.position = new Vector2((xOffset), (yOffset - 0.25f));
                             mazeOC.transform.localScale = new Vector2(-1, -1);
-                            mazeOC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOC);
                         }
                         else
                         {
                             mazeOC = Instantiate(mazeOuterCorner);
                             mazeOC.transform.position = new Vector2((xOffset - 1.24f), (yOffset + 0.01f));
-                            mazeOC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOC);
                         }
                         mazeOC.name = "MazeOuterCorner " + i + " " + j;
+                        mazeOC.transform.parent = topLeftParent;
+                        mazeParts.Add(mazeOC);
                         break;
 
                     case 2:
                         GameObject mazeOL;
+                        mazeOL = Instantiate(mazeOuterLine);
+
                         if (i >= 1 && j == 0 && i < 10)
                         {
-                            mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2((xOffset - 1.233f), yOffset);
                             mazeOL.transform.rotation = Quaternion.Euler(0, 0, 90);
-                            mazeOL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOL);
+
                         }
                         else if (i == 9)
                         {
-                            mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2((xOffset - 1.23f), yOffset);
                             mazeOL.transform.localScale = new Vector2(1, -1);
-                            mazeOL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOL);
                         }
-                        else if (i == 10 || i == 11 || i == 12)
+                        else if (i >= 10 && i < 13)
                         {
-                            mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2((xOffset + 0.26f), (yOffset - 0.27f));
                             mazeOL.transform.rotation = Quaternion.Euler(0, 0, 90);
-                            mazeOL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOL);
                         }
                         else if (i == 13)
                         {
-                            mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2((xOffset - 0.5f), (yOffset - 0.51f));
-                            mazeOL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOL);
                         }
                         else
                         {
-                            mazeOL = Instantiate(mazeOuterLine);
                             mazeOL.transform.position = new Vector2(xOffset, yOffset);
-                            mazeOL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeOL);
                         }
+
                         mazeOL.name = "MazeOuterLine " + i + " " + j;
+                        mazeOL.transform.parent = topLeftParent;
+                        mazeParts.Add(mazeOL);
+
                         break;
 
                     case 3:
                         GameObject mazeIC;
+                        mazeIC = Instantiate(mazeInnerCorner);
+
                         if (i == 2 && j == 5 || i == 2 && j == 11 || i == 6 && j == 5 || i == 6 && j == 8 ||
                            i == 9 && j == 11)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, yOffset);
                             mazeIC.transform.localScale = new Vector2(-1, 1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
 
                         }
                         else if (i == 4 && j == 5 || i == 4 && j == 11 || i == 7 && j == 5)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, yOffset);
                             mazeIC.transform.localScale = new Vector2(-1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
 
                         }
                         else if (i == 4 && j == 2 || i == 4 && j == 7 || i == 7 && j == 2
                                  || i == 10 && j == 13 || i == 13 && j == 7)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, yOffset);
                             mazeIC.transform.localScale = new Vector2(1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
 
                         else if (i == 4 && j == 13)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2((xOffset + 1.24f), yOffset);
                             mazeIC.transform.localScale = new Vector2(1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
                         else if (i == 7 && j == 10)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, (yOffset + 0.02f));
                             mazeIC.transform.localScale = new Vector2(1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
                         else if (i == 7 && j == 13)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2((xOffset - 0.02f), yOffset);
                             mazeIC.transform.localScale = new Vector2(-1, 1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
                         else if (i == 9 && j == 8)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2((xOffset + 0.02f), (yOffset + 0.02f));
                             mazeIC.transform.localScale = new Vector2(1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
-
                         }
                         else if (i == 10 && j == 11)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, (yOffset + 0.02f));
                             mazeIC.transform.localScale = new Vector2(-1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
                         else if (i == 13 && j == 8)
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2((xOffset - 0.02f), yOffset);
                             mazeIC.transform.localScale = new Vector2(-1, -1);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
                         }
                         else
                         {
-                            mazeIC = Instantiate(mazeInnerCorner);
                             mazeIC.transform.position = new Vector2(xOffset, yOffset);
-                            mazeIC.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIC);
+
                         }
+
                         mazeIC.name = "MazeInnerCorner " + i + " " + j;
+                        mazeIC.transform.parent = topLeftParent;
+                        mazeParts.Add(mazeIC);
                         break;
 
                     case 4:
                         GameObject mazeIL;
-                        if (i == 3 && j == 5 || i == 3 && j == 11 || i == 7 && j == 8 || i == 8 && j == 8)
+                        mazeIL = Instantiate(mazeInnerLine);
+                        if (i == 3 && j == 5 || i == 3 && j == 11 || i >= 7 && i < 9 && j == 8)
                         {
-                            mazeIL = Instantiate(mazeInnerLine);
                             mazeIL.transform.position = new Vector2((xOffset + 0.02f), yOffset);
                             mazeIL.transform.rotation = Quaternion.Euler(0, 0, 90);
-                            mazeIL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIL);
                         }
                         else if (i < 6 && j == 13 && i >= 1)
                         {
-                            mazeIL = Instantiate(mazeInnerLine);
                             mazeIL.transform.position = new Vector2((xOffset + 1.24f), yOffset);
                             mazeIL.transform.rotation = Quaternion.Euler(0, 0, 90);
-                            mazeIL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIL);
                         }
-                        else if (i == 3 || i == 7 && j == 7 || i == 7 && j == 8 || i == 8 && j == 7 ||
-                                 i == 8 && j == 8 || i == 8 && j == 13 || i == 9 && j == 7 || i == 9 && j == 13
-                                 || i == 10 && j == 7 || i == 11 || i == 12 && j == 7 || i == 12 && j == 8 || i == 13
+                        else if (i == 3 || i >= 7 && i < 9 && j >= 7 && j < 9
+                                 || i >= 8 && i < 10 && j == 13 || i >= 9 && i < 11 && j == 7
+                                 || i == 11 || i == 12 && j >= 7 && j < 9 || i == 13
                                  || i == 14)
                         {
-                            mazeIL = Instantiate(mazeInnerLine);
+                            ;
                             mazeIL.transform.position = new Vector2((xOffset + 0.002f), yOffset);
                             mazeIL.transform.rotation = Quaternion.Euler(0, 0, 90);
-                            mazeIL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIL);
                         }
-                        else if (i == 4 && j == 3 || i == 4 && j == 4 || i == 4 && j == 8 || i == 4 && j == 9 || i == 4 && j == 10|| i == 7 && j == 3 || i == 7 && j == 4)
+                        else if (i == 4 && j >= 3 && j < 5 || i == 4 && j >= 8 && j < 11 || i == 7 && j >= 3 && j < 5)
                         {
-                            mazeIL = Instantiate(mazeInnerLine);
                             mazeIL.transform.position = new Vector2(xOffset, (yOffset - 0.02f));
-                            mazeIL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIL);
                         }
                         else
                         {
-                            mazeIL = Instantiate(mazeInnerLine);
                             mazeIL.transform.position = new Vector2(xOffset, yOffset);
-                            mazeIL.transform.parent = topLeftParent;
-                            mazeParts.Add(mazeIL);
+
                         }
 
-                        mazeIL.name = "MazeInnerLine " + i + " " + j; 
+                        mazeIL.name = "MazeInnerLine " + i + " " + j;
+                        mazeIL.transform.parent = topLeftParent;
+                        mazeParts.Add(mazeIL);
                         break;
 
                     case 5:
@@ -366,16 +314,15 @@ public class LevelGenerator : MonoBehaviour
                         {
                             mazeD.transform.position = new Vector2((xOffset * 1.11f) + 1.1f, yOffset);
                         }
-
                         else if (i == 8 && j < 8)
                         {
                             mazeD.transform.position = new Vector2((xOffset * 1.1f) + 1f, yOffset);
                         }
-                        else if (i == 2 && j == 1 || i == 4 && j == 1 || i == 6 && j == 1 || i == 7 && j == 1)
+                        else if (i % 2 == 0 && i < 8 && j == 1 || i == 7 && j == 1)
                         {
                             mazeD.transform.position = new Vector2(xOffset - 0.75f, yOffset);
                         }
-                        else if (i == 2 && j == 12 || i == 3 && j == 12 || i == 4 && j == 12)
+                        else if (i >= 2 && i < 5 && j == 12)
                         {
                             mazeD.transform.position = new Vector2(xOffset + 0.75f, yOffset);
                         }
@@ -424,8 +371,6 @@ public class LevelGenerator : MonoBehaviour
                         break;
                 }
 
-                //14 for row 2 straight 
-
                 xOffset += 1.25f;
             }
             xOffset = -18f;
@@ -470,7 +415,6 @@ public class LevelGenerator : MonoBehaviour
         gap.transform.position = new Vector2((xOffset + 18.5f), (yOffset - 3.71f));
         gap.transform.localScale = new Vector3(1.85f, 1, 1);
 
-
         gap = Instantiate(dot);
         gap.transform.position = new Vector2((xOffset + 18.5f), (yOffset + 24.9f));
         gap = Instantiate(dot);
@@ -480,6 +424,7 @@ public class LevelGenerator : MonoBehaviour
     void GenerateGhosts()
     {
         GameObject ghost;
+
         ghost = Instantiate(ghostRed);
         ghost.transform.position = new Vector2(-3f, 0);
         ghost.transform.localScale = new Vector2(1, 1);
@@ -507,7 +452,7 @@ public class LevelGenerator : MonoBehaviour
     }
     void ignoreBottomRow()
     {
-        for(var i = bottomRightParent.childCount - 14; i < bottomRightParent.childCount; i++)
+        for (var i = bottomRightParent.childCount - 14; i < bottomRightParent.childCount; i++)
         {
             bottomRightParent.transform.GetChild(i).gameObject.SetActive(false);
             bottomLeftParent.transform.GetChild(i).gameObject.SetActive(false);
@@ -515,7 +460,6 @@ public class LevelGenerator : MonoBehaviour
     }
     public List<GameObject> GetPellets()
     {
-
         if (pellets.Count != 0)
         {
             return pellets;
@@ -526,18 +470,18 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject GetGameboard()
     {
-        return gameBoard; 
+        return gameBoard;
     }
 
     void StartLevelAudio()
     {
-        AudioSource audioSource = camera.GetComponent<AudioSource>();
+        AudioSource audioSource = cam.GetComponent<AudioSource>();
 
-        if(!audioSource.isPlaying)
+        if (!audioSource.isPlaying)
         {
             audioSource.clip = audioClip;
             audioSource.Play();
-            audioSource.loop = true; 
+            audioSource.loop = true;
         }
     }
 }
