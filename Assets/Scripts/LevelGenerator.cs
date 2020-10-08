@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics.Contracts;
 using System.Net;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class LevelGenerator : MonoBehaviour
@@ -82,14 +84,11 @@ public class LevelGenerator : MonoBehaviour
 
     public AudioClip audioClip;
 
-
-
     private float xOffset;
     private float yOffset;
 
     private List<GameObject> mazeParts;
     private List<GameObject> pellets;
-
     // Start is called before the first frame update
     void Start()
     {

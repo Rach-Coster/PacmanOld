@@ -22,6 +22,7 @@ public class ItemState : MonoBehaviour
     public AudioClip[] audioClip;
     AudioSource audioSource;
 
+    Canvas canvas;
     const int lives = 3; 
     Vector2 pacmanPos;
     // Start is called before the first frame update
