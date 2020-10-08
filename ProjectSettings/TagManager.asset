@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ghosts
+    uniqueID: 900615419
+    locked: 0
+  - name: Mask
+    uniqueID: 3603745019
+    locked: 0
+  - name: Dots
+    uniqueID: 1719855311
+    locked: 0
+  - name: Pacman
+    uniqueID: 3949220057
+    locked: 0

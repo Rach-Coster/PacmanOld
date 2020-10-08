@@ -15,7 +15,6 @@ public class ItemState : MonoBehaviour
     GameObject remainingLives;
 
     private GameObject gameBoard;
-    private GameObject mapBottomLeft;
     private GameObject mapTopLeft;
 
     private GameObject pelletAudioSource; 

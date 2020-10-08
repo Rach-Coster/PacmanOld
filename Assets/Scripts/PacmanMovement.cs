@@ -61,6 +61,7 @@ public class PacmanMovement : MonoBehaviour {
     {
         pm = Instantiate(pacman);
         pm.transform.position = new Vector2(-17, 35.5f);
+        pm.transform.localScale = new Vector2(1, 1);
         pm.AddComponent<AudioSource>(); 
         pm.GetComponent<SpriteRenderer>().sortingOrder = 1; 
     }
