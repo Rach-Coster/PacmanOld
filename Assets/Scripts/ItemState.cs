@@ -47,14 +47,7 @@ public class ItemState : MonoBehaviour
         {
             pellet = gameObject.GetComponent<LevelGenerator>().GetPellets();
             gameBoard = gameObject.GetComponent<LevelGenerator>().GetGameboard();
-        }
 
-
-        pacmanPos = gameObject.GetComponent<PacmanMovement>().GetPacmanPosition();
-
-
-        if (Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 35 || Math.Round(pacmanPos.x) == -17 && Math.Round(pacmanPos.y) == 36)
-        {
             mapTopLeft = gameBoard.transform.Find("MapTopLeft").gameObject;
             GameObject dot = mapTopLeft.transform.Find("Dot 1 1").gameObject;
             dot.SetActive(false);
@@ -63,15 +56,9 @@ public class ItemState : MonoBehaviour
 
     void CreateItems()
     {
-        float xPos = -15.8f; 
+        /*float xPos = -15.8f; 
         Instantiate(cherry);
-        cherry.transform.position = new Vector2(-17.8f, -35.5f);
-
-        for (var i = 0; i < lives; i++)
-        {
-            Instantiate(remainingLives);
-            remainingLives.transform.position = new Vector2(xPos += 2, -35.5f);
-        }
+        cherry.transform.position = new Vector2(-17.8f, -35.5f);*/
     }
 
 }
