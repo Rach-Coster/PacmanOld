@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Text.RegularExpressions;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -89,6 +90,7 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> mazeParts;
     private List<GameObject> pellets;
+    private List<GameObject> walls; 
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +99,7 @@ public class LevelGenerator : MonoBehaviour
 
         mazeParts = new List<GameObject>();
         pellets = new List<GameObject>();
+        walls = new List<GameObject>(); 
 
         topLeftParent.transform.parent = gameBoard.transform;
 
@@ -162,6 +165,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeOC.name = "MazeOuterCorner " + i + " " + j;
                         mazeOC.transform.parent = topLeftParent;
                         mazeParts.Add(mazeOC);
+                        walls.Add(mazeOC); 
                         break;
 
                     case 2:
@@ -196,7 +200,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeOL.name = "MazeOuterLine " + i + " " + j;
                         mazeOL.transform.parent = topLeftParent;
                         mazeParts.Add(mazeOL);
-
+                        walls.Add(mazeOL);
                         break;
 
                     case 3:
@@ -262,6 +266,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeIC.name = "MazeInnerCorner " + i + " " + j;
                         mazeIC.transform.parent = topLeftParent;
                         mazeParts.Add(mazeIC);
+                        walls.Add(mazeIC); 
                         break;
 
                     case 4:
@@ -299,6 +304,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeIL.name = "MazeInnerLine " + i + " " + j;
                         mazeIL.transform.parent = topLeftParent;
                         mazeParts.Add(mazeIL);
+                        walls.Add(mazeIL); 
                         break;
 
                     case 5:
@@ -367,6 +373,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeOT.name = "MazeOuterT " + i + " " + j;
                         mazeOT.transform.parent = topLeftParent;
                         mazeParts.Add(mazeOT);
+                        walls.Add(mazeOT); 
                         break;
                 }
 
@@ -466,7 +473,14 @@ public class LevelGenerator : MonoBehaviour
 
         return null;
     }
-
+    public List<GameObject> GetWalls()
+    {
+        if(walls.Count != 0)
+        {
+            return walls;
+        }
+        return null; 
+    }
     public GameObject GetGameboard()
     {
         return gameBoard;

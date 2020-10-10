@@ -24,7 +24,6 @@ public class ItemState : MonoBehaviour
 
     Canvas canvas;
     const int lives = 3; 
-    Vector2 pacmanPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +32,6 @@ public class ItemState : MonoBehaviour
         audioSource = pelletAudioSource.AddComponent<AudioSource>();
         pelletAudioSource.name = "PelletAudioSource";
         audioSource.clip = audioClip[0]; 
-
-        pacmanPos = new Vector2();
 
         CreateItems();  
 
