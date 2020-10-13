@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PacStudentController : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class PacStudentController : MonoBehaviour
     float delta;
 
     string lastInput;
+    string currentInput;
+
+    RaycastHit2D hitWall;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,42 +35,91 @@ public class PacStudentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TODO: Animation should stop
         walls = gameObject.GetComponent<LevelGenerator>().GetWalls(); 
 
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKey("d"))
         {
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.right);
+
+            pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
-            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x + 1.2f, pacmanInstance.transform.position.y), 0.5f);
+
+            if (Mathf.Abs(hitWall.distance) <= 2)
+            {
+                Debug.Log("Distance " + hitWall.distance);
+                Debug.Log("Result: " + (hitWall.point.x - 2) + " " + hitWall.point.y);
+                
+                if((hitWall.point.x - 2) != -2 && hitWall.point.y != 0)
+                    pacmanInstance.transform.position = new Vector2(hitWall.point.x - 2, hitWall.point.y);
+            }
+            else
+            {
+                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x + 1, pacmanInstance.transform.position.y), 0.1f);
+            }
             lastInput = "d";
         }
 
-        else if (Input.GetKeyDown("w"))
+        else if (Input.GetKey("w"))
         {
-            pacmanInstance.transform.localScale = new Vector2(1, 1);
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.up);
+
+            pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 90);
-            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y + 1.2f), 0.5f);
+            if(Mathf.Abs(hitWall.distance) <= 2)
+            {
+                pacmanInstance.transform.position = new Vector2(hitWall.point.x, hitWall.point.y - 2);
+            } 
+            else 
+            {
+                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y + 1), 0.1f);
+            }
             lastInput = "w";
         }
 
-        else if (Input.GetKeyDown("a"))
+        else if (Input.GetKey("a"))
         {
-            pacmanInstance.transform.localScale = new Vector2(-1, 1);
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.left);
+
+            pacmanInstance.transform.localScale = new Vector2(-0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
-            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x - 1.2f, pacmanInstance.transform.position.y), 0.5f);
+
+            if (Mathf.Abs(hitWall.distance) <= 2)
+            {
+                Debug.Log("Distance " + hitWall.distance);
+                Debug.Log("Result: " + (hitWall.point.x - 2) + " " + hitWall.point.y);
+
+                if ((hitWall.point.x - 2) != -2 && hitWall.point.y != 0)
+                    pacmanInstance.transform.position = new Vector2(hitWall.point.x + 2, hitWall.point.y);
+            }
+            else
+            {
+                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x - 1, pacmanInstance.transform.position.y), 0.1f);
+            }
             lastInput = "a";
         }
 
-        else if (Input.GetKeyDown("s"))
+        else if (Input.GetKey("s"))
         {
-            pacmanInstance.transform.localScale = new Vector2(1, 1);
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.down);
+
+            pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, -90);
-            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y - 1.2f), 0.5f);
+            if (Mathf.Abs(hitWall.distance) <= 2)
+            {
+                pacmanInstance.transform.position = new Vector2(hitWall.point.x, hitWall.point.y - 2);
+            }
+            else
+            {
+                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y - 1), 0.1f);
+            }
             lastInput = "s"; 
         }
 
         else
         {
-            //Insert collision here
+           //TODO: Add Switch lastInput 
+
         }
 
         LerpTweens(); 
@@ -76,7 +130,11 @@ public class PacStudentController : MonoBehaviour
     {
         pacmanInstance = Instantiate(pacmanObject);
         pacmanInstance.transform.position = new Vector2(-17, 35.5f);
-        pacmanInstance.transform.localScale = new Vector2(1, 1);
+        pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
+        pacmanInstance.AddComponent<Rigidbody2D>();
+        pacmanInstance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        pacmanInstance.GetComponent<Rigidbody2D>().sleepMode = RigidbodySleepMode2D.NeverSleep;
+
         pacmanInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
 
