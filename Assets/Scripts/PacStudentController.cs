@@ -37,99 +37,85 @@ public class PacStudentController : MonoBehaviour
     {
         //TODO: Animation should stop
         walls = gameObject.GetComponent<LevelGenerator>().GetWalls(); 
+        LerpTweens(); 
+        delta += Time.deltaTime; 
+    }
 
-        if (Input.GetKey("d"))
+    void FixedUpdate()
+    {
+
+        if (Input.GetKey("w"))
         {
-            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.right);
-
-            pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
-            pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            if (Mathf.Abs(hitWall.distance) <= 2)
-            {
-                Debug.Log("Distance " + hitWall.distance);
-                Debug.Log("Result: " + (hitWall.point.x - 2) + " " + hitWall.point.y);
-                
-                if((hitWall.point.x - 2) != -2 && hitWall.point.y != 0)
-                    pacmanInstance.transform.position = new Vector2(hitWall.point.x - 2, hitWall.point.y);
-            }
-            else
-            {
-                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x + 1, pacmanInstance.transform.position.y), 0.1f);
-            }
-            lastInput = "d";
-        }
-
-        else if (Input.GetKey("w"))
-        {
-            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.up);
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.up, 1);
 
             pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 90);
-            if(Mathf.Abs(hitWall.distance) <= 2)
+
+            if (hitWall)
             {
+                Debug.Log("Hit Wall up");
                 pacmanInstance.transform.position = new Vector2(hitWall.point.x, hitWall.point.y - 2);
-            } 
-            else 
-            {
-                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y + 1), 0.1f);
             }
-            lastInput = "w";
+            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y + 1), 0.1f);
         }
 
-        else if (Input.GetKey("a"))
+        if (Input.GetKey("s"))
         {
-            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.left);
-
-            pacmanInstance.transform.localScale = new Vector2(-0.8f, 0.8f);
-            pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            if (Mathf.Abs(hitWall.distance) <= 2)
-            {
-                Debug.Log("Distance " + hitWall.distance);
-                Debug.Log("Result: " + (hitWall.point.x - 2) + " " + hitWall.point.y);
-
-                if ((hitWall.point.x - 2) != -2 && hitWall.point.y != 0)
-                    pacmanInstance.transform.position = new Vector2(hitWall.point.x + 2, hitWall.point.y);
-            }
-            else
-            {
-                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x - 1, pacmanInstance.transform.position.y), 0.1f);
-            }
-            lastInput = "a";
-        }
-
-        else if (Input.GetKey("s"))
-        {
-            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.down);
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.down, 1);
 
             pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
             pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, -90);
-            if (Mathf.Abs(hitWall.distance) <= 2)
+
+            if (hitWall)
             {
-                pacmanInstance.transform.position = new Vector2(hitWall.point.x, hitWall.point.y - 2);
+                pacmanInstance.transform.position = new Vector2(hitWall.point.x, hitWall.point.y + 2);
             }
-            else
+            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y - 1), 0.1f);
+        }
+
+
+        if (Input.GetKey("a"))
+        {
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.left, 1);
+
+            pacmanInstance.transform.localScale = new Vector2(-0.8f, 0.8f);
+            pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Debug.Log("Hit Wall left");
+            if (hitWall)
             {
-                AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x, pacmanInstance.transform.position.y - 1), 0.1f);
+                pacmanInstance.transform.position = new Vector2(hitWall.point.x + 2, hitWall.point.y);
             }
-            lastInput = "s"; 
+            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x - 1, pacmanInstance.transform.position.y), 0.1f);
+        }
+
+
+
+        if (Input.GetKey("d"))
+        {
+            hitWall = Physics2D.Raycast(pacmanInstance.transform.position, Vector2.right, 1);
+
+            pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
+            pacmanInstance.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Debug.Log("Hit Wall right");
+            if (hitWall)
+            {
+                pacmanInstance.transform.position = new Vector2(hitWall.point.x - 2, hitWall.point.y);
+            }
+            AddTween(pacmanInstance.transform, pacmanInstance.transform.position, new Vector2(pacmanInstance.transform.position.x + 1, pacmanInstance.transform.position.y), 0.1f);
         }
 
         else
         {
-           //TODO: Add Switch lastInput 
+            //TODO: Add Switch lastInput 
 
         }
 
-        LerpTweens(); 
-        delta += Time.deltaTime; 
     }
 
     void GeneratePacman()
     {
         pacmanInstance = Instantiate(pacmanObject);
-        pacmanInstance.transform.position = new Vector2(-17, 35.5f);
+        pacmanInstance.transform.position = new Vector2(-17.52f, 35.5f);
         pacmanInstance.transform.localScale = new Vector2(0.8f, 0.8f);
         pacmanInstance.AddComponent<Rigidbody2D>();
         pacmanInstance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;

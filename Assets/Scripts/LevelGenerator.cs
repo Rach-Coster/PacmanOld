@@ -323,7 +323,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeIC.transform.parent = topLeftParent;
 
                         mazeIC.AddComponent<BoxCollider2D>();
-                        mazeIC.GetComponent<BoxCollider2D>().size = new Vector2(2.5f, 1);
+                        mazeIC.GetComponent<BoxCollider2D>().size = new Vector2(1.4f, 0.5f);
                         mazeIC.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeIC);
@@ -388,7 +388,6 @@ public class LevelGenerator : MonoBehaviour
                                  || i == 11 || i == 12 && j >= 7 && j < 9 || i == 13
                                  || i == 14)
                         {
-                            ;
                             mazeIL.transform.position = new Vector2((xOffset + 0.002f), yOffset);
                             mazeIL.transform.rotation = Quaternion.Euler(0, 0, 90);
                         }

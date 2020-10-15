@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     Text countDown; 
     private void Start()
     {
-        countDown = gameObject.GetComponent<Text>(); 
+
     }
     private void Update()
     {
