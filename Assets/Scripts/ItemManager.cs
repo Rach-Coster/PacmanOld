@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ItemState : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     private List<GameObject> pellet;
 
@@ -22,8 +22,6 @@ public class ItemState : MonoBehaviour
     public AudioClip[] audioClip;
     AudioSource audioSource;
 
-    Canvas canvas;
-    const int lives = 3; 
     // Start is called before the first frame update
     void Start()
     {
