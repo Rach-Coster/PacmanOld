@@ -172,63 +172,65 @@ public class GhostController : MonoBehaviour
         while (true)
         {
             AddTweens(ghostPurpleInstance.transform, new Vector2(18.5f, 18), new Vector2(11.5f, 18), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(11.5f, 18), new Vector2(11.5f, -13), 0.25f);
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(7.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(11.5f, -13), new Vector2(18.5f, -13), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(18.5f, -13), new Vector2(18.5f, -30.5f), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(4.4f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(18.5f, -30.5f), new Vector2(3.5f, -30.5f), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.7f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(3.5f, -30.5f), new Vector2(3.5f, -20.5f), 0.25f);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2.5f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(3.5f, -20.5f), new Vector2(-2, -20.5f), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.4f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-2, -20.5f), new Vector2(-2, -30.5f), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(2.5f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-2, -30.5f), new Vector2(-17.5f, -30.5f), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.9f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-17.5f, -30.5f), new Vector2(-17.5f, -13), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(4.4f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-17.5f, -13), new Vector2(-10.5f, -13), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(1.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-10.5f, -13), new Vector2(-10.5f, 18.5f), 0.25f);
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(7.9f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-10.5f, 18.5f), new Vector2(-17.5f, 18.5f), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-17.5f, 18.5f), new Vector2(-17.5f, 36), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(4.4f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-17.5f, 36), new Vector2(-2, 36), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.9f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-2, 36), new Vector2(-2, 26), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(2.5f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(-2, 26), new Vector2(3.5f, 26), 0.25f);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.4f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(3.5f, 26), new Vector2(3.5f, 36), 0.25f);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2.5f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(3.5f, 36), new Vector2(18.5f, 36), 0.25f);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.8f);
 
             AddTweens(ghostPurpleInstance.transform, new Vector2(18.5f, 36), new Vector2(18.5f, 18.5f), 0.25f);
+            yield return new WaitForSeconds(4.4f);
+
 
         }
     }
