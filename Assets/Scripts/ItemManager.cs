@@ -9,9 +9,6 @@ public class ItemManager : MonoBehaviour
     private List<GameObject> pellet;
 
     [SerializeField]
-    GameObject cherry;
-
-    [SerializeField]
     GameObject remainingLives;
 
     private GameObject gameBoard;
@@ -52,9 +49,6 @@ public class ItemManager : MonoBehaviour
 
     void CreateItems()
     {
-        /*float xPos = -15.8f; 
-        Instantiate(cherry);
-        cherry.transform.position = new Vector2(-17.8f, -35.5f);*/
     }
 
 }
