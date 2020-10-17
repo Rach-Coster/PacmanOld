@@ -435,10 +435,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1143506931}
   - component: {fileID: 1143506930}
-  - component: {fileID: 1143506932}
   - component: {fileID: 1143506933}
   - component: {fileID: 1143506934}
   - component: {fileID: 1143506935}
+  - component: {fileID: 1143506932}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -486,7 +486,7 @@ MonoBehaviour:
   topLeftParent: {fileID: 568468667}
   bottomLeftParent: {fileID: 2090032310}
   bottomRightParent: {fileID: 74414139}
-  audioClip: {fileID: 8300000, guid: fdd8f843dfe07224e9a3732a0e820c8c, type: 3}
+  audioClip: {fileID: 0}
 --- !u!4 &1143506931
 Transform:
   m_ObjectHideFlags: 0
@@ -508,13 +508,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143506929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67aba403989739a49b0604e5c344a94e, type: 3}
+  m_Script: {fileID: 11500000, guid: 032ac7c6ded221e46a8e181a0ae94180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 9df629316e60bbf4b9b84e7d78dfb3b8, type: 3}
-  pacman: {fileID: 1448931699403284011, guid: a7d7aaf18620b744fbe4a91ad0c60dcc, type: 3}
+  ghostRedPrefab: {fileID: 6577510358862218518, guid: 7eb794035c98c7f4d8494fa8cdb012eb,
+    type: 3}
+  ghostYellowPrefab: {fileID: 8280768687879440350, guid: 0f24465adf7f33142b9777b6ae84f779,
+    type: 3}
+  ghostPurplePrefab: {fileID: 3394558433959623113, guid: c8f0822af1a8f2346bfe4c522332114d,
+    type: 3}
+  ghostGreenPrefab: {fileID: 5422221398447290517, guid: db222589a154d3844a8553e212a5ef0d,
+    type: 3}
 --- !u!114 &1143506933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +560,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143506929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46f7fed2c3fccb44a5e93b923f1077d, type: 3}
   m_Name: 
