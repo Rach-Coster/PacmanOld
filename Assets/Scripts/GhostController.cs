@@ -48,18 +48,22 @@ public class GhostController : MonoBehaviour
         ghostRedInstance = Instantiate(ghostRedPrefab);
         ghostRedInstance.transform.position = new Vector2(-3f, 0);
         ghostRedInstance.transform.localScale = new Vector2(1, 1);
+        ghostRedInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         ghostYellowInstance = Instantiate(ghostYellowPrefab);
         ghostYellowInstance.transform.position = new Vector2(4f, 0);
         ghostYellowInstance.transform.localScale = new Vector2(1, 1);
+        ghostYellowInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         ghostPurpleInstance = Instantiate(ghostPurplePrefab);
         ghostPurpleInstance.transform.position = new Vector2(-3f, 5.5f);
         ghostPurpleInstance.transform.localScale = new Vector2(1, 1);
+        ghostPurpleInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         ghostGreenInstance = Instantiate(ghostGreenPrefab);
         ghostGreenInstance.transform.position = new Vector2(4, 5.5f);
         ghostGreenInstance.transform.localScale = new Vector2(1, 1);
+        ghostGreenInstance.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
 
 
