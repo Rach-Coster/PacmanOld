@@ -17,9 +17,7 @@ public class LevelGenerator : MonoBehaviour
     {
         {1,2,2,2,2,2,2,2,2,2,2,2,2,7},
         {2,5,5,5,5,5,5,5,5,5,5,5,5,4},
-
         {2,5,3,4,4,3,5,3,4,4,4,3,5,4},
-
         {2,6,4,0,0,4,5,4,0,0,0,4,5,4},
         {2,5,3,4,4,3,5,3,4,4,4,3,5,3},
         {2,5,5,5,5,5,5,5,5,5,5,5,5,5},
@@ -62,18 +60,6 @@ public class LevelGenerator : MonoBehaviour
     private GameObject dot;
 
     [SerializeField]
-    private GameObject ghostYellow;
-
-    [SerializeField]
-    private GameObject ghostGreen;
-
-    [SerializeField]
-    private GameObject ghostRed;
-
-    [SerializeField]
-    private GameObject ghostPurple;
-
-    [SerializeField]
     private GameObject gameBoard;
 
     public Transform topRightParent;
@@ -105,13 +91,10 @@ public class LevelGenerator : MonoBehaviour
         topLeftParent.transform.parent = gameBoard.transform;
 
         CreateLevel();
-        GenerateGhosts();
 
         DupeLevel(topRightParent, new Vector3(-1, 1, 1), 10, 0);
         DupeLevel(bottomLeftParent, new Vector3(1, -1, 1), 0, 17);
         DupeLevel(bottomRightParent, new Vector3(-1, -1, 1), -47.2f, 17);
-
-
 
         //ignoreBottomRow(); 
         RemoveGaps();
@@ -535,27 +518,6 @@ public class LevelGenerator : MonoBehaviour
         gap.transform.position = new Vector2((xOffset + 18.5f), (yOffset + 24.9f));
         gap = Instantiate(dot);
         gap.transform.position = new Vector2((xOffset + 18.5f), (yOffset - 21.1f));
-    }
-
-    void GenerateGhosts()
-    {
-        GameObject ghost;
-
-        ghost = Instantiate(ghostRed);
-        ghost.transform.position = new Vector2(-3f, 0);
-        ghost.transform.localScale = new Vector2(1, 1);
-
-        ghost = Instantiate(ghostYellow);
-        ghost.transform.position = new Vector2(4f, 0);
-        ghost.transform.localScale = new Vector2(1, 1);
-
-        ghost = Instantiate(ghostPurple);
-        ghost.transform.position = new Vector2(-3f, 5.5f);
-        ghost.transform.localScale = new Vector2(1, 1);
-
-        ghost = Instantiate(ghostGreen);
-        ghost.transform.position = new Vector2(4, 5.5f);
-        ghost.transform.localScale = new Vector2(1, 1);
     }
 
     void ClearMaze()

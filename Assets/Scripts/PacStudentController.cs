@@ -157,4 +157,9 @@ public class PacStudentController : MonoBehaviour
             }
         }
     }
+
+    Transform GetPacmanPosition()
+    {
+        return pacmanInstance.transform; 
+    }
 }
