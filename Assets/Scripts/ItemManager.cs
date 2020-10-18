@@ -4,12 +4,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ItemState : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     private List<GameObject> pellet;
-
-    [SerializeField]
-    GameObject cherry;
 
     [SerializeField]
     GameObject remainingLives;
@@ -22,8 +19,6 @@ public class ItemState : MonoBehaviour
     public AudioClip[] audioClip;
     AudioSource audioSource;
 
-    Canvas canvas;
-    const int lives = 3; 
     // Start is called before the first frame update
     void Start()
     {
@@ -54,9 +49,6 @@ public class ItemState : MonoBehaviour
 
     void CreateItems()
     {
-        /*float xPos = -15.8f; 
-        Instantiate(cherry);
-        cherry.transform.position = new Vector2(-17.8f, -35.5f);*/
     }
 
 }
