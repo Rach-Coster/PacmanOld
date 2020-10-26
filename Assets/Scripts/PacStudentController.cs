@@ -12,7 +12,7 @@ public class PacStudentController : MonoBehaviour
     List<TweenLibrary> activeTweens;
     LevelGenerator levelGenerator;
 
-    private List <GameObject> walls;
+    private List<GameObject> walls;
 
     float delta;
 
@@ -158,7 +158,7 @@ public class PacStudentController : MonoBehaviour
         }
     }
 
-    Transform GetPacmanPosition()
+    public Transform GetPacmanTransform()
     {
         return pacmanInstance.transform; 
     }

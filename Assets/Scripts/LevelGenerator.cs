@@ -77,7 +77,9 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> mazeParts;
     private List<GameObject> pellets;
-    private List<GameObject> walls; 
+    
+    private List<KeyValuePair<GameObject, Boolean>> levelParts; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +88,8 @@ public class LevelGenerator : MonoBehaviour
 
         mazeParts = new List<GameObject>();
         pellets = new List<GameObject>();
-        walls = new List<GameObject>(); 
+
+        levelParts = new List<KeyValuePair<GameObject, Boolean>>(); 
 
         topLeftParent.transform.parent = gameBoard.transform;
 
@@ -104,6 +107,7 @@ public class LevelGenerator : MonoBehaviour
     {
         StartLevelAudio();
     }
+
     void CreateLevel()
     {
         for (var i = 0; i < 15; i++)
@@ -154,7 +158,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeOC.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeOC);
-                        walls.Add(mazeOC);
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeOC, true));
                         break;
 
                     case 2:
@@ -194,7 +198,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeOL.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeOL);
-                        walls.Add(mazeOL);
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeOL, true));
                         break;
                     //TODO: Create offset generator 
                     case 3:
@@ -310,7 +314,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeIC.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeIC);
-                        walls.Add(mazeIC);
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeIC, true));
                         break;
 
                     case 4:
@@ -392,7 +396,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeIL.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeIL);
-                        walls.Add(mazeIL); 
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeIL, true));
                         break;
 
                     case 5:
@@ -433,6 +437,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeD.transform.parent = topLeftParent;
                         mazeParts.Add(mazeD);
                         pellets.Add(mazeD);
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeD, false));
                         break;
 
                     case 6:
@@ -450,6 +455,7 @@ public class LevelGenerator : MonoBehaviour
                         mazeP.transform.parent = topLeftParent;
                         pellets.Add(mazeP);
                         mazeParts.Add(mazeP);
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeP, false));
 
                         break;
 
@@ -466,7 +472,8 @@ public class LevelGenerator : MonoBehaviour
                         mazeOT.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.15f);
 
                         mazeParts.Add(mazeOT);
-                        walls.Add(mazeOT); 
+
+                        levelParts.Add(new KeyValuePair<GameObject, Boolean>(mazeOT, true));
                         break;
                 }
 
@@ -480,13 +487,14 @@ public class LevelGenerator : MonoBehaviour
     void DupeLevel(Transform parent, Vector3 scale, float xAddition, float yAddition)
     {
 
-        for (var i = 0; i < mazeParts.Count; i++)
+        for (var i = 0; i < levelParts.Count; i++)
         {
             GameObject clone;
-            clone = Instantiate(mazeParts[i]);
+            clone = Instantiate(levelParts[i].Key);
 
-            clone.transform.position = new Vector2(mazeParts[i].transform.position.x + xAddition, mazeParts[i].transform.position.y + yAddition);
+            clone.transform.position = new Vector2(levelParts[i].Key.transform.position.x + xAddition, levelParts[i].Key.transform.position.y + yAddition);
             clone.transform.parent = parent;
+           
         }
 
         parent.transform.localScale = scale;
@@ -519,23 +527,6 @@ public class LevelGenerator : MonoBehaviour
         gap = Instantiate(dot);
         gap.transform.position = new Vector2((xOffset + 18.5f), (yOffset - 21.1f));
     }
-
-    void ClearMaze()
-    {
-
-        for (var i = 0; i < mazeParts.Count; i++)
-        {
-            mazeParts.RemoveAt(i);
-        }
-    }
-    void ignoreBottomRow()
-    {
-        for (var i = bottomRightParent.childCount - 14; i < bottomRightParent.childCount; i++)
-        {
-            bottomRightParent.transform.GetChild(i).gameObject.SetActive(false);
-            bottomLeftParent.transform.GetChild(i).gameObject.SetActive(false);
-        }
-    }
     public List<GameObject> GetPellets()
     {
         if (pellets.Count != 0)
@@ -546,9 +537,19 @@ public class LevelGenerator : MonoBehaviour
         return null;
     }
     public List<GameObject> GetWalls()
-    {
-        if(walls.Count != 0)
+    {   if (levelParts != null)
         {
+            List<GameObject> walls;
+            walls = new List<GameObject>();
+
+            for (var i = 0; i < levelParts.Count; i++)
+            {
+                if (levelParts[i].Value == true)
+                {
+                    walls.Add(levelParts[i].Key);
+                }
+            }
+
             return walls;
         }
         return null; 

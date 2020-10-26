@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GhostController : MonoBehaviour
@@ -48,6 +49,9 @@ public class GhostController : MonoBehaviour
         ghostRedInstance = Instantiate(ghostRedPrefab);
         ghostRedInstance.transform.position = new Vector2(-3f, 0);
         ghostRedInstance.transform.localScale = new Vector2(1, 1);
+        ghostRedInstance.AddComponent<Rigidbody2D>();
+        ghostRedInstance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        ghostRedInstance.GetComponent<Rigidbody2D>().sleepMode = RigidbodySleepMode2D.NeverSleep;
 
         ghostYellowInstance = Instantiate(ghostYellowPrefab);
         ghostYellowInstance.transform.position = new Vector2(4f, 0);
@@ -111,8 +115,14 @@ public class GhostController : MonoBehaviour
         AddTweens(ghostRedInstance.transform, new Vector2(0, 0), new Vector2(0, 10.5f), 0.25f);
         yield return new WaitForSeconds(2.6f);
         AddTweens(ghostRedInstance.transform, new Vector2(0, 10.5f), new Vector2(-6.5f, 10.5f), 0.25f);
+        yield return new WaitForSeconds(1.8f);
+        RedGhostBehaviour();
     }
 
+    void RedGhostBehaviour()
+    {
+        RaycastHit2D[] hitWall = Physics2D.BoxCastAll(ghostRedInstance.transform.position, new Vector2(4, 4), 0, transform.up);
+    }   
     IEnumerator GreenGhostSetup()
     {
         AddTweens(ghostGreenInstance.transform, new Vector2(4, 5.5f), new Vector2(0, 5.5f), 0.25f);

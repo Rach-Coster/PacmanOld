@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 1143506934}
   - component: {fileID: 1143506935}
   - component: {fileID: 1143506932}
+  - component: {fileID: 1143506937}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -473,14 +474,6 @@ MonoBehaviour:
     type: 3}
   pellet: {fileID: 158220887811278501, guid: 182cd332d7da46646afe828d227d12c6, type: 3}
   dot: {fileID: 7618255304813386191, guid: de81c91469737c74f95b5ef9ccf2fe89, type: 3}
-  ghostYellow: {fileID: 8280768687879440350, guid: 0f24465adf7f33142b9777b6ae84f779,
-    type: 3}
-  ghostGreen: {fileID: 5422221398447290517, guid: db222589a154d3844a8553e212a5ef0d,
-    type: 3}
-  ghostRed: {fileID: 6577510358862218518, guid: 7eb794035c98c7f4d8494fa8cdb012eb,
-    type: 3}
-  ghostPurple: {fileID: 3394558433959623113, guid: c8f0822af1a8f2346bfe4c522332114d,
-    type: 3}
   gameBoard: {fileID: 366629377}
   topRightParent: {fileID: 91683047}
   topLeftParent: {fileID: 568468667}
@@ -563,6 +556,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46f7fed2c3fccb44a5e93b923f1077d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1143506937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143506929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8439aa6dab84d4f44adcb6ee7d70f622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1742010488
@@ -672,6 +677,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hud
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883496955439092115, guid: 6ccf40be1e0bf4347b8d3828345ff620,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3883496955439092119, guid: 6ccf40be1e0bf4347b8d3828345ff620,
         type: 3}
