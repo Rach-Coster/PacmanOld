@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -50,11 +51,11 @@ public class SpriteManager : MonoBehaviour
         GeneratePacman();
     
 
-        addTween(pm.transform, new Vector2(18, -6), 0.25f);
-        addTween(gr.transform, new Vector2(18, -6), 0.25f);
-        addTween(gg.transform, new Vector2(18, -6), 0.25f);
-        addTween(gy.transform, new Vector2(18, -6), 0.25f);
-        addTween(gp.transform, new Vector2(18, -6), 0.25f);
+        addTween(pm.transform, new Vector2(9, -6), 0.25f);
+        addTween(gr.transform, new Vector2(9, -6), 0.25f);
+        addTween(gg.transform, new Vector2(9, -6), 0.25f);
+        addTween(gy.transform, new Vector2(9, -6), 0.25f);
+        addTween(gp.transform, new Vector2(9, -6), 0.25f);
     }
 
     // Update is called once per frame
@@ -72,38 +73,41 @@ public class SpriteManager : MonoBehaviour
     void CreateBorder()
     {
         GameObject dBorder;
-        float xSpacingTop = -20;
-        float xSpacingBottom = -20;
+        float xSpacingTop = -14;
+        float xSpacingBottom = -12;
 
-        float ySpacingLeft = 10;
-        float ySpacingRight = 10;
-        for (var i = 0; i < 58; i++)
+        float ySpacingLeft = 8;
+        float ySpacingRight = 8;
+
+        for (var i = 0; i < 40; i++)
         {
             dBorder = Instantiate(dot);
+            dBorder.SetActive(true);
+  
 
-            if (i % 2 == 0 && i < 40 || i % 2 == 1 && i >= 40 && i < 48 || i % 2 == 0 && i > 48)
+
+            if (i % 2 == 0 && i < 40)
             {
-
                 dBorder.GetComponent<Animator>().enabled = true;
-
             }
 
-            if (i < 20)
+
+            if (i < 13)
             {
                 dBorder.transform.position = new Vector2(xSpacingTop += 2, 8);
             }
-            else if(i < 40)
+
+            else if(i >= 13 && i < 21)
             {
-                
-                dBorder.transform.position = new Vector2(xSpacingBottom += 2, -8);
+                dBorder.transform.position = new Vector2(xSpacingTop, ySpacingRight -= 2);
             }
-            else if(i < 49)
+            else if(i >= 21 && i < 29)
             {
-                dBorder.transform.position = new Vector2(-20, ySpacingLeft -= 2);
+                dBorder.transform.position = new Vector2(-xSpacingTop, ySpacingLeft -= 2);
             }
             else
             {
-                dBorder.transform.position  = new Vector2(20, ySpacingRight -= 2);
+                dBorder.transform.position = new Vector2(xSpacingBottom += 2, -8);
             }
 
             dBorder.transform.parent = GameObject.Find("Border").transform;
@@ -114,7 +118,7 @@ public class SpriteManager : MonoBehaviour
     void GeneratePacman()
     {
         pm = Instantiate(pacman);
-        pm.transform.position = new Vector2(-18, -6);
+        pm.transform.position = new Vector2(-10, -6);
         pm.transform.localScale = new Vector2(0.5f, 0.5f);
         pm.GetComponent<SpriteRenderer>().sortingOrder = 3;
     }
@@ -122,27 +126,31 @@ public class SpriteManager : MonoBehaviour
     void GenerateGhosts()
     {
         gr = Instantiate(ghostRed);
-        gr.transform.position = new Vector2(-13, -6);
+        gr.transform.position = new Vector2(-7, -6);
         gr.transform.localScale = new Vector2(0.5f, 0.5f);
+        gr.GetComponentInChildren<Canvas>().enabled = false; 
 
         gg =Instantiate(ghostGreen);
-        gg.transform.position = new Vector2(-11, -6);
+        gg.transform.position = new Vector2(-5, -6);
         gg.transform.localScale = new Vector2(0.5f, 0.5f);
+        gg.GetComponentInChildren<Canvas>().enabled = false;
 
 
         gy = Instantiate(ghostYellow);
-        gy.transform.position = new Vector2(-9, -6);
+        gy.transform.position = new Vector2(-3, -6);
         gy.transform.localScale = new Vector2(0.5f, 0.5f);
+        gy.GetComponentInChildren<Canvas>().enabled = false;
 
         gp = Instantiate(ghostPurple);
-        gp.transform.position = new Vector2(-7, -6);
+        gp.transform.position = new Vector2(-1, -6);
         gp.transform.localScale = new Vector2(0.5f, 0.5f);
+        gp.GetComponentInChildren<Canvas>().enabled = false;
     }
 
     void GenerateMask()
     {
         Instantiate(mask);
-        mask.transform.position = new Vector2(18, -6);
+        mask.transform.position = new Vector2(9, -6);
         mask.transform.localScale = new Vector2(0.5f, 1);
         mask.GetComponent<SpriteRenderer>().sortingOrder = 1; 
 
